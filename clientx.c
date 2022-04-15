@@ -12,8 +12,21 @@ int main(int argc, char const *argv[])
     const char *filename = argv[4];
     const char *fifoname = argv[2];
     struct Matrix *matrix = readMatrix(filename);
-    writeFIFO(fifoname, matrix, 1);
+    // create fifo with pid
+
+    char uniqFifo[100];
+    sprintf(uniqFifo, "%s%d", "fifo_p", getpid());
+
+    int fd = mkfifo(uniqFifo, 0666);
+    if (fd == -1)
+    {
+        fprintf(stderr, "Error opening FIFO %s\n", uniqFifo);
+        exit(EXIT_FAILURE);
+    }
+
+    writeFIFO(fifoname, matrix, getpid());
     freeMatrix(matrix);
+    printResponse(uniqFifo);
 
     return 0;
 }
@@ -34,7 +47,8 @@ struct Matrix *readMatrix(const char *fileName)
     FILE *file;
     int count = 0, row = 0;
     int **matrix;
-    char *line = malloc(sizeof(char) * 100);
+    int lineCap = 100;
+    char *line = malloc(sizeof(char) * lineCap);
     struct Matrix *matrixStruct;
     file = fopen(fileName, "r");
     if (file == NULL)
@@ -44,11 +58,11 @@ struct Matrix *readMatrix(const char *fileName)
     }
     // read the first line
     char ch = ',';
-    while ((ch = fgetc(file)) != '\n')
+    while ((ch = fgetc(file)) != '\n' && ch != EOF)
     {
         if (count > 100)
         {
-            line = (char *)realloc(line, sizeof(char) * 100);
+            line = (char *)realloc(line, sizeof(char) * (lineCap*=2));
         }
         line[count] = ch;
         if (ch == ',')
@@ -63,26 +77,40 @@ struct Matrix *readMatrix(const char *fileName)
 
     // create the matrix
     matrix = createMatrix(row);
-    separeteValues(line, matrix, row, 0); // todo
+    if (separeteValues(line, matrix, row, 0) == -1)
+    {
+        fprintf(stderr, "Matrix must be square.\n");
+        exit(EXIT_FAILURE);
+    }
+
     // read the rest of the file
     int i = 1;
     while (i < row)
     {
         count = 0;
         ch = ',';
-        line = malloc(sizeof(char) * 100);
+        
         while ((ch = fgetc(file)) != EOF && ch != '\n')
         {
-            if (count > 100)
+            if (count > lineCap)
             {
-                line = (char *)realloc(line, sizeof(char) * 100);
+                line = (char *)realloc(line, sizeof(char) * (lineCap*=2));
             }
             line[count] = ch;
             count++;
         }
         line[count] = '\0';
-        separeteValues(line, matrix, row, i);
-        i++; 
+        if (separeteValues(line, matrix, row, i) == -1)
+        {
+            fprintf(stderr, "Matrix must be square.\n");
+            exit(EXIT_FAILURE);
+        }
+        i++;
+    }
+
+    if(fgetc(file) != EOF){
+        fprintf(stderr, "Matrix must be square.\n");
+        exit(EXIT_FAILURE);
     }
 
     // create matrix struct
@@ -105,18 +133,22 @@ int separeteValues(char *line, int **matrix, int row, int count)
     token = strtok(line, ",");
     while (token != NULL)
     {
-        if (i > row)
+        if (i >= row)
             return -1;
         matrix[count][i] = atoi(token);
         token = strtok(NULL, ",");
         i++;
     }
 
+    if (i < row)
+        return -1;
+
     return 0;
 }
 
-void writeFIFO(const char *fifoName, struct Matrix *m, int client_id){
-    //open FIFO
+void writeFIFO(const char *fifoName, struct Matrix *m, int client_id)
+{
+    // open FIFO
     int fd = open(fifoName, O_WRONLY);
     if (fd == -1)
     {
@@ -124,28 +156,26 @@ void writeFIFO(const char *fifoName, struct Matrix *m, int client_id){
         exit(EXIT_FAILURE);
     }
 
-    //write to FIFO
-    int *res = (int *)malloc(sizeof(int)*(m->row*m->col+3));
-    res[0] = client_id;
+    // write to FIFO
+    int *res = (int *)malloc(sizeof(int) * (m->row * m->col + 3));
+    res[2] = client_id;
     res[1] = m->row;
-    res[2] = m->col;
+    res[0] = m->col;
     for (int i = 0; i < m->row; i++)
     {
         for (int j = 0; j < m->col; j++)
         {
-            res[i*m->col+j+3] = m->matrix[i][j];
+            res[i * m->col + j + 3] = m->matrix[i][j];
         }
     }
 
-    if (write(fd, res, sizeof(int)*(m->row*m->col+3)) == -1)
+    if (write(fd, res, sizeof(int) * (m->row * m->col + 3)) == -1)
     {
         fprintf(stderr, "Error writing to FIFO %s\n", fifoName);
         exit(EXIT_FAILURE);
     }
 
-
     close(fd);
-
 }
 
 void freeMatrix(struct Matrix *matrix)
@@ -156,4 +186,24 @@ void freeMatrix(struct Matrix *matrix)
     }
     free(matrix->matrix);
     free(matrix);
+}
+
+void printResponse(char *uniqFifo)
+{
+    // open fifo for reading
+    int fd = open(uniqFifo, O_RDONLY);
+    if (fd == -1)
+    {
+        fprintf(stderr, "Error opening FIFO %s\n", uniqFifo);
+        exit(EXIT_FAILURE);
+    }
+    // read from fifo
+    int res;
+    if (read(fd, &res, sizeof(int)) == -1)
+    {
+        fprintf(stderr, "Error reading from FIFO %s\n", uniqFifo);
+        exit(EXIT_FAILURE);
+    }
+
+    fprintf(stdout, "%d\n", res);
 }

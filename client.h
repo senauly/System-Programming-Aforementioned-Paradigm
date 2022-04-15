@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 struct Matrix{
     int row;
