@@ -1,34 +1,98 @@
 #include "client.h"
+#define NO_EINTR(stmt)                   \
+    while ((stmt) < 0 && errno == EINTR) \
+        ;
+
+sig_atomic_t sigintReceived = 0;
+
+void handleInterrupt(int signal_num)
+{
+    if (signal_num == SIGINT)
+        sigintReceived = 1;
+}
 
 int main(int argc, char const *argv[])
 {
-    // get arguments
-    if (argc != 5)
+    char ts[26];
+
+    struct sigaction interruptHandle;
+    memset(&interruptHandle, 0, sizeof(interruptHandle));
+    interruptHandle.sa_handler = handleInterrupt;
+
+
+
+    if (sigaction(SIGINT, &interruptHandle, NULL) == -1)
     {
-        fprintf(stderr, "Usage: ./client -s pathToServerFifo -o pathToDataFile");
+        perror("sigaction");
         exit(EXIT_FAILURE);
     }
 
-    const char *filename = argv[4];
-    const char *fifoname = argv[2];
-    struct Matrix *matrix = readMatrix(filename);
-    // create fifo with pid
+    // get arguments
+    if (argc != 5)
+    {
+        getTimeStamp(ts);
+        fprintf(stderr, "%s Client PID#%d: Error. Usage: ./client -s pathToServerFifo -o pathToDataFile\n", ts, getpid());
+        exit(EXIT_FAILURE);
+    }
 
+    // create fifo with pid
     char uniqFifo[100];
     sprintf(uniqFifo, "%s%d", "fifo_p", getpid());
 
     int fd = mkfifo(uniqFifo, 0666);
     if (fd == -1)
     {
-        fprintf(stderr, "Error opening FIFO %s\n", uniqFifo);
+        getTimeStamp(ts);
+        fprintf(stderr, "%s Client PID#%d: Error. mkfifo failed.\n", ts, getpid());
+        perror("Opening FIFO");
         exit(EXIT_FAILURE);
+    }
+    int uniqFifoFd = open(uniqFifo, O_RDWR);
+    printf("ilerlio\n");
+    const char *filename = argv[4];
+    const char *fifoname = argv[2];
+    char *str = realpath(filename, NULL);
+    if (sigintReceived)
+    {
+        fprintf(stderr, "%s SIGINT received, exiting Client PID#%d\n.", ts, getpid());
+        exit(EXIT_SUCCESS);
+    }
+    struct Matrix *matrix = readMatrix(filename);
+
+    time_t start = time(NULL);
+    getTimeStamp(ts);
+    fprintf(stdout, "%s Client PID#%d (%s) is submitting a %dx%d matrix.\n", ts, getpid(), str, matrix->row, matrix->col);
+    free(str);
+    if (sigintReceived)
+    {
+        getTimeStamp(ts);
+        fprintf(stderr, "%s SIGINT received, exiting Client PID#%d\n.", ts, getpid());
+        freeMatrix(matrix);
+        exit(EXIT_SUCCESS);
+    }
+    
+
+    if (sigintReceived)
+    {
+        getTimeStamp(ts);
+        fprintf(stderr, "%s SIGINT received, exiting Client PID#%d\n.", ts, getpid());
+        freeMatrix(matrix);
+        unlink(uniqFifo);
+        exit(EXIT_SUCCESS);
     }
 
     writeFIFO(fifoname, matrix, getpid());
     freeMatrix(matrix);
-    printResponse(uniqFifo);
+    if (sigintReceived)
+    {
+        getTimeStamp(ts);
+        fprintf(stderr, "%s SIGINT received, exiting Client PID#%d\n.", ts, getpid());
+        unlink(uniqFifo);
+        exit(EXIT_SUCCESS);
+    }
+    printResponse(uniqFifoFd, uniqFifo, start);
 
-    return 0;
+    exit(EXIT_SUCCESS);
 }
 
 int **createMatrix(int row)
@@ -45,6 +109,8 @@ int **createMatrix(int row)
 struct Matrix *readMatrix(const char *fileName)
 {
     FILE *file;
+    char ts[26];
+
     int count = 0, row = 0;
     int **matrix;
     int lineCap = 100;
@@ -53,7 +119,8 @@ struct Matrix *readMatrix(const char *fileName)
     file = fopen(fileName, "r");
     if (file == NULL)
     {
-        fprintf(stderr, "Error opening file %s\n", fileName);
+        getTimeStamp(ts);
+        fprintf(stderr, "%s Client PID#%d: Error. File %s not found.\n", ts, getpid(), fileName);
         exit(EXIT_FAILURE);
     }
     // read the first line
@@ -62,7 +129,7 @@ struct Matrix *readMatrix(const char *fileName)
     {
         if (count > 100)
         {
-            line = (char *)realloc(line, sizeof(char) * (lineCap*=2));
+            line = (char *)realloc(line, sizeof(char) * (lineCap *= 2));
         }
         line[count] = ch;
         if (ch == ',')
@@ -74,6 +141,13 @@ struct Matrix *readMatrix(const char *fileName)
     }
 
     row++;
+
+    if (row < 2)
+    {
+        getTimeStamp(ts);
+        fprintf(stderr, "%s Client PID#%d: Error. Matrix must have at least 2 row.\n", ts, getpid());
+        exit(EXIT_FAILURE);
+    }
 
     // create the matrix
     matrix = createMatrix(row);
@@ -89,12 +163,12 @@ struct Matrix *readMatrix(const char *fileName)
     {
         count = 0;
         ch = ',';
-        
+
         while ((ch = fgetc(file)) != EOF && ch != '\n')
         {
             if (count > lineCap)
             {
-                line = (char *)realloc(line, sizeof(char) * (lineCap*=2));
+                line = (char *)realloc(line, sizeof(char) * (lineCap *= 2));
             }
             line[count] = ch;
             count++;
@@ -102,14 +176,17 @@ struct Matrix *readMatrix(const char *fileName)
         line[count] = '\0';
         if (separeteValues(line, matrix, row, i) == -1)
         {
-            fprintf(stderr, "Matrix must be square.\n");
+            getTimeStamp(ts);
+            fprintf(stderr, "%s Client PID#%d: Error. Matrix must be square.\n", ts, getpid());
             exit(EXIT_FAILURE);
         }
         i++;
     }
 
-    if(fgetc(file) != EOF){
-        fprintf(stderr, "Matrix must be square.\n");
+    if (fgetc(file) != EOF)
+    {
+        getTimeStamp(ts);
+        fprintf(stderr, "%s Client PID#%d: Error. Matrix must be square.\n", ts, getpid());
         exit(EXIT_FAILURE);
     }
 
@@ -147,20 +224,22 @@ int separeteValues(char *line, int **matrix, int row, int count)
 }
 
 void writeFIFO(const char *fifoName, struct Matrix *m, int client_id)
-{
+{   
+    int write_byte;
     // open FIFO
     int fd = open(fifoName, O_WRONLY);
     if (fd == -1)
     {
-        fprintf(stderr, "Error opening FIFO %s\n", fifoName);
+        perror("Opening FIFO");
         exit(EXIT_FAILURE);
     }
-
+    
     // write to FIFO
     int *res = (int *)malloc(sizeof(int) * (m->row * m->col + 3));
     res[2] = client_id;
     res[1] = m->row;
     res[0] = m->col;
+
     for (int i = 0; i < m->row; i++)
     {
         for (int j = 0; j < m->col; j++)
@@ -168,14 +247,17 @@ void writeFIFO(const char *fifoName, struct Matrix *m, int client_id)
             res[i * m->col + j + 3] = m->matrix[i][j];
         }
     }
-
-    if (write(fd, res, sizeof(int) * (m->row * m->col + 3)) == -1)
+        
+    NO_EINTR(write_byte = write(fd, res, sizeof(int) * (m->row * m->col + 3)));
+    
+    if ( write_byte < 0)
     {
-        fprintf(stderr, "Error writing to FIFO %s\n", fifoName);
+        perror("Writing to FIFO");
         exit(EXIT_FAILURE);
     }
-
     close(fd);
+    free(res);
+    
 }
 
 void freeMatrix(struct Matrix *matrix)
@@ -188,22 +270,36 @@ void freeMatrix(struct Matrix *matrix)
     free(matrix);
 }
 
-void printResponse(char *uniqFifo)
+void printResponse(int uniqFifoFd, char* uniqFifo, time_t start)
 {
     // open fifo for reading
-    int fd = open(uniqFifo, O_RDONLY);
-    if (fd == -1)
-    {
-        fprintf(stderr, "Error opening FIFO %s\n", uniqFifo);
-        exit(EXIT_FAILURE);
-    }
+    char ts[26];
+    int read_byte;
     // read from fifo
     int res;
-    if (read(fd, &res, sizeof(int)) == -1)
+    read_byte = read(uniqFifoFd, &res, sizeof(int));
+    if (read_byte < 0)
     {
-        fprintf(stderr, "Error reading from FIFO %s\n", uniqFifo);
+        perror("Reading from FIFO");
         exit(EXIT_FAILURE);
     }
 
-    fprintf(stdout, "%d\n", res);
+    time_t end = time(NULL);
+    getTimeStamp(ts);
+    if (res)
+    {
+        fprintf(stdout, "%s Client PID#%d: matrix is invertible, total time %ld seconds, goodbye.\n", ts, getpid(), (end - start));
+    }
+
+    else
+    {
+        fprintf(stdout, "%s Client PID#%d: matrix is non-invertible, total time %ld seconds, goodbye.\n", ts, getpid(), (end - start));
+    }
+
+    close(uniqFifoFd);
+     if (unlink(uniqFifo) == -1)
+    {
+        perror("Removing FIFO");
+        exit(EXIT_FAILURE);
+    }
 }

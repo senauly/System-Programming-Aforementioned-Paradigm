@@ -1,0 +1,242 @@
+2022-04-18 22:22:32 Server Y (/home/emreoztrk/Desktop/last_v/log) started, p=2,t=1
+2022-04-18 22:22:32 Instantiated server Z
+2022-04-18 22:22:32 Z:Server Z (/home/emreoztrk/Desktop/last_v/log) started t=1, r=2.
+2022-04-18 22:22:35 Worker PID#22721 is handling client PID22729, matrix size 3x3, pool busy 0/2
+2022-04-18 22:22:35 Worker PID#22722 is handling client PID22729, matrix size 3x3, pool busy 0/2
+2022-04-18 22:22:35 Forwarding request of client PID#22731 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22731 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Z: Worker PID#22724 is handling client PID#22731, matrix size 3x3, pool busy 1/2
+2022-04-18 22:22:35 Z: Worker PID#22725 is handling client PID#22731, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22732 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22733 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22734 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22735 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22738 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22740 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22743 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22736 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22747 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22748 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22749 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22750 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22752 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22751 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22753 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22754 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22755 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22756 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22757 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22759 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22760 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22761 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22761 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22762 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22763 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22764 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22765 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22766 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22767 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22768 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22769 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22770 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22771 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22772 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:35 Forwarding request of client PID#22773 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:36 Worker PID#22721 responding to client PID#22729: the matrix is invertible.
+2022-04-18 22:22:36 Worker PID#22722 responding to client PID#22729: the matrix is invertible.
+2022-04-18 22:22:36 Worker PID#22724 responding to client PID#22731: the matrix is invertible.
+2022-04-18 22:22:36 Z: Worker PID#22724 is handling client PID#22732, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:36 Worker PID#22725 responding to client PID#22731: the matrix is invertible.
+2022-04-18 22:22:36 Z: Worker PID#22725 is handling client PID#22733, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:37 Worker PID#22724 responding to client PID#22732: the matrix is invertible.
+2022-04-18 22:22:37 Z: Worker PID#22724 is handling client PID#22734, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:37 Worker PID#22725 responding to client PID#22733: the matrix is invertible.
+2022-04-18 22:22:37 Z: Worker PID#22725 is handling client PID#22735, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:38 Worker PID#22724 responding to client PID#22734: the matrix is invertible.
+2022-04-18 22:22:38 Z: Worker PID#22724 is handling client PID#22738, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:38 Worker PID#22725 responding to client PID#22735: the matrix is invertible.
+2022-04-18 22:22:38 Z: Worker PID#22725 is handling client PID#22740, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:39 Worker PID#22724 responding to client PID#22738: the matrix is invertible.
+2022-04-18 22:22:39 Z: Worker PID#22724 is handling client PID#22743, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:39 Worker PID#22725 responding to client PID#22740: the matrix is invertible.
+2022-04-18 22:22:39 Z: Worker PID#22725 is handling client PID#22736, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:40 Worker PID#22724 responding to client PID#22743: the matrix is invertible.
+2022-04-18 22:22:40 Z: Worker PID#22724 is handling client PID#22747, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:40 Worker PID#22725 responding to client PID#22736: the matrix is invertible.
+2022-04-18 22:22:40 Z: Worker PID#22725 is handling client PID#22748, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:41 Worker PID#22724 responding to client PID#22747: the matrix is invertible.
+2022-04-18 22:22:41 Worker PID#22725 responding to client PID#22748: the matrix is invertible.
+2022-04-18 22:22:41 Z: Worker PID#22724 is handling client PID#22749, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:41 Z: Worker PID#22725 is handling client PID#22750, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:42 Worker PID#22724 responding to client PID#22749: the matrix is invertible.
+2022-04-18 22:22:42 Worker PID#22725 responding to client PID#22750: the matrix is invertible.
+2022-04-18 22:22:42 Z: Worker PID#22724 is handling client PID#22752, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:42 Z: Worker PID#22725 is handling client PID#22751, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:43 Worker PID#22724 responding to client PID#22752: the matrix is invertible.
+2022-04-18 22:22:43 Worker PID#22725 responding to client PID#22751: the matrix is invertible.
+2022-04-18 22:22:43 Z: Worker PID#22724 is handling client PID#22753, matrix size 3x3, pool busy 1/2
+2022-04-18 22:22:43 Z: Worker PID#22725 is handling client PID#22754, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:44 Worker PID#22724 responding to client PID#22753: the matrix is invertible.
+2022-04-18 22:22:44 Worker PID#22725 responding to client PID#22754: the matrix is invertible.
+2022-04-18 22:22:44 Z: Worker PID#22724 is handling client PID#22755, matrix size 3x3, pool busy 1/2
+2022-04-18 22:22:44 Z: Worker PID#22725 is handling client PID#22756, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:45 Worker PID#22724 responding to client PID#22755: the matrix is invertible.
+2022-04-18 22:22:45 Worker PID#22725 responding to client PID#22756: the matrix is invertible.
+2022-04-18 22:22:45 Z: Worker PID#22724 is handling client PID#22757, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:45 Z: Worker PID#22725 is handling client PID#22759, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:46 Worker PID#22724 responding to client PID#22757: the matrix is invertible.
+2022-04-18 22:22:46 Worker PID#22725 responding to client PID#22759: the matrix is invertible.
+2022-04-18 22:22:46 Z: Worker PID#22724 is handling client PID#22760, matrix size 3x3, pool busy 1/2
+2022-04-18 22:22:46 Z: Worker PID#22725 is handling client PID#22761, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:47 Worker PID#22724 responding to client PID#22760: the matrix is invertible.
+2022-04-18 22:22:47 Z: Worker PID#22724 is handling client PID#22761, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:47 Worker PID#22725 responding to client PID#22761: the matrix is invertible.
+2022-04-18 22:22:47 Z: Worker PID#22725 is handling client PID#22762, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:48 Worker PID#22724 responding to client PID#22761: the matrix is invertible.
+2022-04-18 22:22:48 Z: Worker PID#22724 is handling client PID#22763, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:48 Worker PID#22725 responding to client PID#22762: the matrix is invertible.
+2022-04-18 22:22:48 Z: Worker PID#22725 is handling client PID#22764, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:49 Worker PID#22724 responding to client PID#22763: the matrix is invertible.
+2022-04-18 22:22:49 Worker PID#22725 responding to client PID#22764: the matrix is invertible.
+2022-04-18 22:22:49 Z: Worker PID#22724 is handling client PID#22765, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:49 Z: Worker PID#22725 is handling client PID#22766, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:50 Worker PID#22724 responding to client PID#22765: the matrix is invertible.
+2022-04-18 22:22:50 Z: Worker PID#22724 is handling client PID#22767, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:50 Worker PID#22725 responding to client PID#22766: the matrix is invertible.
+2022-04-18 22:22:50 Z: Worker PID#22725 is handling client PID#22768, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:51 Worker PID#22724 responding to client PID#22767: the matrix is invertible.
+2022-04-18 22:22:51 Z: Worker PID#22724 is handling client PID#22769, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:51 Worker PID#22725 responding to client PID#22768: the matrix is invertible.
+2022-04-18 22:22:51 Z: Worker PID#22725 is handling client PID#22770, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:52 Worker PID#22724 responding to client PID#22769: the matrix is invertible.
+2022-04-18 22:22:52 Worker PID#22725 responding to client PID#22770: the matrix is invertible.
+2022-04-18 22:22:52 Z: Worker PID#22724 is handling client PID#22771, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:52 Z: Worker PID#22725 is handling client PID#22772, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:53 Worker PID#22724 responding to client PID#22771: the matrix is invertible.
+2022-04-18 22:22:53 Z: Worker PID#22724 is handling client PID#22773, matrix size 3x3, pool busy 2/2
+2022-04-18 22:22:53 Worker PID#22725 responding to client PID#22772: the matrix is invertible.
+2022-04-18 22:22:54 Worker PID#22724 responding to client PID#22773: the matrix is invertible.
+2022-04-18 22:27:17 Server Y (/home/emreoztrk/Desktop/last_v/log) started, p=2,t=1
+2022-04-18 22:27:17 Instantiated server Z
+2022-04-18 22:27:17 Z:Server Z (/home/emreoztrk/Desktop/last_v/log) started t=1, r=2.
+2022-04-18 22:27:24 Worker PID#23039 is handling client PID23069, matrix size 3x3, pool busy 0/2
+2022-04-18 22:27:24 Worker PID#23040 is handling client PID23070, matrix size 3x3, pool busy 0/2
+2022-04-18 22:27:24 Forwarding request of client PID#23071 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Z: Worker PID#23042 is handling client PID#23071, matrix size 3x3, pool busy 1/2
+2022-04-18 22:27:24 Forwarding request of client PID#23072 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Z: Worker PID#23044 is handling client PID#23072, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23073 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23074 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23075 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23076 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23078 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23082 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23085 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23090 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23089 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23088 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23091 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23087 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23092 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23096 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23095 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23095 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23097 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23093 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23098 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23099 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23100 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23101 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23103 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23102 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23104 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23105 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23107 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23108 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23109 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23110 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23110 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23111 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23112 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23113 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23114 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23115 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:24 Forwarding request of client PID#23116 to serverZ, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:25 Worker PID#23039 responding to client PID#23069: the matrix is invertible.
+2022-04-18 22:27:25 Worker PID#23040 responding to client PID#23070: the matrix is invertible.
+2022-04-18 22:27:25 Worker PID#23042 responding to client PID#23071: the matrix is invertible.
+2022-04-18 22:27:25 Worker PID#23044 responding to client PID#23072: the matrix is invertible.
+2022-04-18 22:27:25 Z: Worker PID#23042 is handling client PID#23073, matrix size 3x3, pool busy 1/2
+2022-04-18 22:27:25 Z: Worker PID#23044 is handling client PID#23074, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:26 Worker PID#23042 responding to client PID#23073: the matrix is invertible.
+2022-04-18 22:27:26 Worker PID#23044 responding to client PID#23074: the matrix is invertible.
+2022-04-18 22:27:26 Z: Worker PID#23042 is handling client PID#23075, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:26 Z: Worker PID#23044 is handling client PID#23076, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:27 Worker PID#23042 responding to client PID#23075: the matrix is invertible.
+2022-04-18 22:27:27 Worker PID#23044 responding to client PID#23076: the matrix is invertible.
+2022-04-18 22:27:27 Z: Worker PID#23042 is handling client PID#23078, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:27 Z: Worker PID#23044 is handling client PID#23082, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:28 Worker PID#23042 responding to client PID#23078: the matrix is invertible.
+2022-04-18 22:27:28 Worker PID#23044 responding to client PID#23082: the matrix is invertible.
+2022-04-18 22:27:28 Z: Worker PID#23042 is handling client PID#23085, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:28 Z: Worker PID#23044 is handling client PID#23090, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:29 Worker PID#23042 responding to client PID#23085: the matrix is invertible.
+2022-04-18 22:27:29 Worker PID#23044 responding to client PID#23090: the matrix is invertible.
+2022-04-18 22:27:29 Z: Worker PID#23042 is handling client PID#23089, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:29 Z: Worker PID#23044 is handling client PID#23088, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:30 Worker PID#23042 responding to client PID#23089: the matrix is invertible.
+2022-04-18 22:27:30 Worker PID#23044 responding to client PID#23088: the matrix is invertible.
+2022-04-18 22:27:30 Z: Worker PID#23042 is handling client PID#23091, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:30 Z: Worker PID#23044 is handling client PID#23087, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:31 Worker PID#23042 responding to client PID#23091: the matrix is invertible.
+2022-04-18 22:27:31 Worker PID#23044 responding to client PID#23087: the matrix is invertible.
+2022-04-18 22:27:31 Z: Worker PID#23042 is handling client PID#23092, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:31 Z: Worker PID#23044 is handling client PID#23096, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:32 Worker PID#23042 responding to client PID#23092: the matrix is invertible.
+2022-04-18 22:27:32 Worker PID#23044 responding to client PID#23096: the matrix is invertible.
+2022-04-18 22:27:32 Z: Worker PID#23042 is handling client PID#23095, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:32 Z: Worker PID#23044 is handling client PID#3, matrix size 1x1, pool busy 2/2
+2022-04-18 22:27:33 Worker PID#23042 responding to client PID#23095: the matrix is invertible.
+2022-04-18 22:27:33 Worker PID#23044 responding to client PID#3: the matrix is invertible.
+2022-04-18 22:27:33 Z: Worker PID#23042 is handling client PID#23097, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:33 Z: Worker PID#23044 is handling client PID#23093, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:34 Worker PID#23042 responding to client PID#23097: the matrix is invertible.
+2022-04-18 22:27:34 Worker PID#23044 responding to client PID#23093: the matrix is invertible.
+2022-04-18 22:27:34 Z: Worker PID#23042 is handling client PID#23098, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:34 Z: Worker PID#23044 is handling client PID#23099, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:35 Worker PID#23042 responding to client PID#23098: the matrix is invertible.
+2022-04-18 22:27:35 Worker PID#23044 responding to client PID#23099: the matrix is invertible.
+2022-04-18 22:27:35 Z: Worker PID#23042 is handling client PID#23100, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:35 Z: Worker PID#23044 is handling client PID#23101, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:36 Worker PID#23042 responding to client PID#23100: the matrix is invertible.
+2022-04-18 22:27:36 Worker PID#23044 responding to client PID#23101: the matrix is invertible.
+2022-04-18 22:27:36 Z: Worker PID#23042 is handling client PID#23103, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:36 Z: Worker PID#23044 is handling client PID#23102, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:37 Worker PID#23042 responding to client PID#23103: the matrix is invertible.
+2022-04-18 22:27:37 Worker PID#23044 responding to client PID#23102: the matrix is invertible.
+2022-04-18 22:27:37 Z: Worker PID#23042 is handling client PID#23104, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:37 Z: Worker PID#23044 is handling client PID#23105, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:38 Worker PID#23042 responding to client PID#23104: the matrix is invertible.
+2022-04-18 22:27:38 Worker PID#23044 responding to client PID#23105: the matrix is invertible.
+2022-04-18 22:27:38 Z: Worker PID#23042 is handling client PID#23107, matrix size 3x3, pool busy 1/2
+2022-04-18 22:27:38 Z: Worker PID#23044 is handling client PID#23108, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:39 Worker PID#23042 responding to client PID#23107: the matrix is invertible.
+2022-04-18 22:27:39 Z: Worker PID#23042 is handling client PID#23109, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:39 Worker PID#23044 responding to client PID#23108: the matrix is invertible.
+2022-04-18 22:27:39 Z: Worker PID#23044 is handling client PID#23110, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:40 Worker PID#23042 responding to client PID#23109: the matrix is invertible.
+2022-04-18 22:27:40 Z: Worker PID#23042 is handling client PID#23110, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:40 Worker PID#23044 responding to client PID#23110: the matrix is invertible.
+2022-04-18 22:27:40 Z: Worker PID#23044 is handling client PID#23111, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:41 Worker PID#23042 responding to client PID#23110: the matrix is invertible.
+2022-04-18 22:27:41 Z: Worker PID#23042 is handling client PID#23112, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:41 Worker PID#23044 responding to client PID#23111: the matrix is invertible.
+2022-04-18 22:27:41 Z: Worker PID#23044 is handling client PID#23113, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:42 Worker PID#23042 responding to client PID#23112: the matrix is invertible.
+2022-04-18 22:27:42 Z: Worker PID#23042 is handling client PID#23114, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:42 Worker PID#23044 responding to client PID#23113: the matrix is invertible.
+2022-04-18 22:27:42 Z: Worker PID#23044 is handling client PID#23115, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:43 Worker PID#23042 responding to client PID#23114: the matrix is invertible.
+2022-04-18 22:27:43 Z: Worker PID#23042 is handling client PID#23116, matrix size 3x3, pool busy 2/2
+2022-04-18 22:27:43 Worker PID#23044 responding to client PID#23115: the matrix is invertible.
+2022-04-18 22:27:44 Worker PID#23042 responding to client PID#23116: the matrix is invertible.

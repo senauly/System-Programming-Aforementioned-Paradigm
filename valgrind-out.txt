@@ -1,0 +1,781 @@
+==15772== Memcheck, a memory error detector
+==15772== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==15772== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==15772== Command: ./serverY -s path -o log -p 2 -r 2 -t 1
+==15772== Parent PID: 2437
+==15772== 
+--15772-- 
+--15772-- Valgrind options:
+--15772--    --leak-check=full
+--15772--    --show-leak-kinds=all
+--15772--    --track-origins=yes
+--15772--    --verbose
+--15772--    --log-file=valgrind-out.txt
+--15772-- Contents of /proc/version:
+--15772--   Linux version 5.13.0-39-generic (buildd@lcy02-amd64-080) (gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #44~20.04.1-Ubuntu SMP Thu Mar 24 16:43:35 UTC 2022
+--15772-- 
+--15772-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--15772-- Page sizes: currently 4096, max supported 4096
+--15772-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--15772-- Reading syms from /home/emreoztrk/Desktop/last_v/serverY
+--15772-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--15772--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
+--15772--   .. CRC mismatch (computed 0306b78c wanted 8d362b37)
+--15772--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
+--15772--   .. CRC mismatch (computed 0306b78c wanted 8d362b37)
+--15772--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
+--15772--   .. CRC is valid
+--15772-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--15772--    object doesn't have a symbol table
+--15772--    object doesn't have a dynamic symbol table
+--15772-- Scheduler: using generic scheduler lock implementation.
+--15772-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==15772== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-15772-by-emreoztrk-on-???
+==15772== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-15772-by-emreoztrk-on-???
+==15772== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-15772-by-emreoztrk-on-???
+==15772== 
+==15772== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==15772== don't want to do, unless you know exactly what you're doing,
+==15772== or are doing some strange experiment):
+==15772==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=15772 ...command...
+==15772== 
+==15772== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==15772==   /path/to/gdb ./serverY
+==15772== and then give GDB the following command
+==15772==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=15772
+==15772== --pid is optional if only one valgrind process is running
+==15772== 
+--15772-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--15772-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--15772-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--15772--    object doesn't have a symbol table
+--15772-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--15772--    object doesn't have a symbol table
+==15772== WARNING: new redirection conflicts with existing -- ignoring it
+--15772--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--15772--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--15772-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--15772-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--15772-- Reading syms from /usr/lib/x86_64-linux-gnu/librt-2.31.so
+--15772--   Considering /usr/lib/x86_64-linux-gnu/librt-2.31.so ..
+--15772--   .. CRC mismatch (computed a25149bb wanted cf42d776)
+--15772--   Considering /lib/x86_64-linux-gnu/librt-2.31.so ..
+--15772--   .. CRC mismatch (computed a25149bb wanted cf42d776)
+--15772--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/librt-2.31.so ..
+--15772--   .. CRC is valid
+--15772-- Reading syms from /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+--15772--   Considering /usr/lib/debug/.build-id/f0/983025f0e0f327a6da752ff4ffa675e0be393f.debug ..
+--15772--   .. build-id is valid
+--15772-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--15772--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
+--15772--   .. CRC mismatch (computed ef41b1a0 wanted f854b801)
+--15772--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
+--15772--   .. CRC mismatch (computed ef41b1a0 wanted f854b801)
+--15772--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
+--15772--   .. CRC is valid
+--15772-- REDIR: 0x492d4b0 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c7b0 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d7e0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c0d0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c810 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492ec80 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x4949d10 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x4949850 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d610 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d440 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c740 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c180 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d570 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x4949810 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c6a0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c260 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d830 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c200 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d980 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x494af80 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x4949890 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c850 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c130 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492c660 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x4935bd0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d880 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d400 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x4949960 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492cb10 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d780 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d720 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492ecc0 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x492d8d0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--15772-- REDIR: 0x4a15410 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--15772-- REDIR: 0x4a18a70 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+--15772-- REDIR: 0x4a10ae0 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--15772-- REDIR: 0x4a155e0 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--15772-- REDIR: 0x4927700 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--15772-- REDIR: 0x4927110 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--15772-- REDIR: 0x4a185f0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--15772-- REDIR: 0x492cfd0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--15772-- REDIR: 0x4a11bd0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+--15772-- REDIR: 0x4a11710 (libc.so.6:__rawmemchr_avx2) redirected to 0x4843580 (rawmemchr)
+--15772-- REDIR: 0x4a185d0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+--15772-- REDIR: 0x4a15220 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+==15773== Conditional jump or move depends on uninitialised value(s)
+==15773==    at 0x4904988: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== Use of uninitialised value of size 8
+==15773==    at 0x48E86CB: _itoa_word (_itoa.c:179)
+==15773==    by 0x49045A4: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== Conditional jump or move depends on uninitialised value(s)
+==15773==    at 0x48E86DD: _itoa_word (_itoa.c:179)
+==15773==    by 0x49045A4: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== Conditional jump or move depends on uninitialised value(s)
+==15773==    at 0x4905258: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== Conditional jump or move depends on uninitialised value(s)
+==15773==    at 0x490471E: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15774== Conditional jump or move depends on uninitialised value(s)
+==15774==    at 0x4904988: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== Use of uninitialised value of size 8
+==15774==    at 0x48E86CB: _itoa_word (_itoa.c:179)
+==15774==    by 0x49045A4: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== Conditional jump or move depends on uninitialised value(s)
+==15774==    at 0x48E86DD: _itoa_word (_itoa.c:179)
+==15774==    by 0x49045A4: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775== Syscall param rt_sigaction(act->sa_mask) points to uninitialised byte(s)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15775==    at 0x487E496: __libc_sigaction (sigaction.c:58)
+==15775==    by 0x10AA2C: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775==    by 0x10C89B: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== Conditional jump or move depends on uninitialised value(s)
+==15775==  Address 0x1ffefeae58 is on thread 1's stack
+==15774==    at 0x4905258: __vfprintf_internal (vfprintf-internal.c:1687)
+==15775==  in frame #0, created by __libc_sigaction (sigaction.c:43)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15775==  Uninitialised value was created by a stack allocation
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15775==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775== 
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15775== Syscall param rt_sigaction(act->sa_flags) points to uninitialised byte(s)
+==15775==    at 0x487E496: __libc_sigaction (sigaction.c:58)
+==15775==    by 0x10AA2C: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775==    by 0x10C89B: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775==  Address 0x1ffefeae48 is on thread 1's stack
+==15775==  in frame #0, created by __libc_sigaction (sigaction.c:43)
+==15775==  Uninitialised value was created by a stack allocation
+==15775==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775== 
+==15774== Conditional jump or move depends on uninitialised value(s)
+==15774==    at 0x490471E: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+--15775-- REDIR: 0x4a14ff0 (libc.so.6:__strchr_avx2) redirected to 0x483ebf0 (index)
+==15775== Syscall param read(buf) points to unaddressable byte(s)
+==15775==    at 0x487D332: read (read.c:26)
+==15775==    by 0x10CAB4: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775==  Address 0x4a84fa0 is 0 bytes after a block of size 48 alloc'd
+==15775==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15775==    by 0x10CA7E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15775== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x483B7A0: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEBE: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x48429FA: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842A11: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842A20: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842A29: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842A55: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Use of uninitialised value of size 8
+==15777==    at 0x4842A7C: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842AA5: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842ABC: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Use of uninitialised value of size 8
+==15777==    at 0x4842AD6: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Use of uninitialised value of size 8
+==15777==    at 0x4842AD9: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842AE4: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842AFD: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15774== Invalid read of size 4
+==15774==    at 0x10C248: convertMatrix (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10BF45: sendResponse (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10BE7B: childProcessY (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B559: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Address 0x4a84110 is 0 bytes after a block of size 32 alloc'd
+==15774==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15774==    by 0x10BDFB: childProcessY (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B559: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15772== Warning: invalid file descriptor -1 in syscall read()
+==15772==    at 0x487D332: read (read.c:26)
+==15772==    by 0x10B76E: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15772== Warning: invalid file descriptor -1 in syscall close()
+==15772==    at 0x487D3D7: close (close.c:27)
+==15772==    by 0x10B781: main (in /home/emreoztrk/Desktop/last_v/serverY)
+--15774-- REDIR: 0x4a17810 (libc.so.6:__stpcpy_avx2) redirected to 0x4842300 (stpcpy)
+==15777== 
+==15777== HEAP SUMMARY:
+==15777==     in use at exit: 0 bytes in 0 blocks
+==15777==   total heap usage: 34 allocs, 34 frees, 15,586 bytes allocated
+==15777== 
+==15777== All heap blocks were freed -- no leaks are possible
+==15777== 
+==15777== ERROR SUMMARY: 17 errors from 15 contexts (suppressed: 0 from 0)
+==15777== 
+==15777== 1 errors in context 1 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842AFD: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 2 of 15:
+==15777== Use of uninitialised value of size 8
+==15777==    at 0x4842AD6: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 3 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842ABC: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 4 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842AA5: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 5 of 15:
+==15777== Use of uninitialised value of size 8
+==15777==    at 0x4842A7C: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 6 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842A55: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 7 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842A29: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 8 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842A20: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 9 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842A11: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 10 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x48429FA: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 11 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x483B7A0: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEBE: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 12 of 15:
+==15777== Syscall param rt_sigaction(act->sa_flags) points to uninitialised byte(s)
+==15777==    at 0x487E496: __libc_sigaction (sigaction.c:58)
+==15777==    by 0x10AA2C: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C89B: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Address 0x1ffefeae48 is on thread 1's stack
+==15777==  in frame #0, created by __libc_sigaction (sigaction.c:43)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 1 errors in context 13 of 15:
+==15777== Syscall param rt_sigaction(act->sa_mask) points to uninitialised byte(s)
+==15777==    at 0x487E496: __libc_sigaction (sigaction.c:58)
+==15777==    by 0x10AA2C: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C89B: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Address 0x1ffefeae58 is on thread 1's stack
+==15777==  in frame #0, created by __libc_sigaction (sigaction.c:43)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 2 errors in context 14 of 15:
+==15777== Conditional jump or move depends on uninitialised value(s)
+==15777==    at 0x4842AE4: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== 
+==15777== 2 errors in context 15 of 15:
+==15777== Use of uninitialised value of size 8
+==15777==    at 0x4842AD9: memmove (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15777==    by 0x10AEF4: readFromSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10CDD4: childProcessZ (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10C92E: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777==  Uninitialised value was created by a stack allocation
+==15777==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15777== 
+==15777== ERROR SUMMARY: 17 errors from 15 contexts (suppressed: 0 from 0)
+==15773== 
+==15773== HEAP SUMMARY:
+==15773==     in use at exit: 0 bytes in 0 blocks
+==15773==   total heap usage: 30 allocs, 30 frees, 10,292 bytes allocated
+==15773== 
+==15773== All heap blocks were freed -- no leaks are possible
+==15773== 
+==15773== ERROR SUMMARY: 10 errors from 5 contexts (suppressed: 0 from 0)
+==15773== 
+==15773== 2 errors in context 1 of 5:
+==15773== Conditional jump or move depends on uninitialised value(s)
+==15773==    at 0x490471E: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== 
+==15773== 2 errors in context 2 of 5:
+==15773== Conditional jump or move depends on uninitialised value(s)
+==15773==    at 0x4905258: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== 
+==15773== 2 errors in context 3 of 5:
+==15773== Conditional jump or move depends on uninitialised value(s)
+==15773==    at 0x48E86DD: _itoa_word (_itoa.c:179)
+==15773==    by 0x49045A4: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== 
+==15773== 2 errors in context 4 of 5:
+==15773== Use of uninitialised value of size 8
+==15773==    at 0x48E86CB: _itoa_word (_itoa.c:179)
+==15773==    by 0x49045A4: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== 
+==15773== 2 errors in context 5 of 5:
+==15773== Conditional jump or move depends on uninitialised value(s)
+==15773==    at 0x4904988: __vfprintf_internal (vfprintf-internal.c:1687)
+==15773==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15773==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15773==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773==  Uninitialised value was created by a stack allocation
+==15773==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15773== 
+==15773== ERROR SUMMARY: 10 errors from 5 contexts (suppressed: 0 from 0)
+==15780== 
+==15780== HEAP SUMMARY:
+==15780==     in use at exit: 0 bytes in 0 blocks
+==15780==   total heap usage: 15 allocs, 15 frees, 15,124 bytes allocated
+==15780== 
+==15780== All heap blocks were freed -- no leaks are possible
+==15780== 
+==15780== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==15780== 
+==15780== 1 errors in context 1 of 2:
+==15780== Syscall param rt_sigaction(act->sa_flags) points to uninitialised byte(s)
+==15780==    at 0x487E496: __libc_sigaction (sigaction.c:58)
+==15780==    by 0x10AA2C: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15780==    by 0x10C89B: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15780==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15780==  Address 0x1ffefeae48 is on thread 1's stack
+==15780==  in frame #0, created by __libc_sigaction (sigaction.c:43)
+==15780==  Uninitialised value was created by a stack allocation
+==15780==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15780== 
+==15780== 
+==15780== 1 errors in context 2 of 2:
+==15780== Syscall param rt_sigaction(act->sa_mask) points to uninitialised byte(s)
+==15780==    at 0x487E496: __libc_sigaction (sigaction.c:58)
+==15780==    by 0x10AA2C: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15780==    by 0x10C89B: serverZ_process (in /home/emreoztrk/Desktop/last_v/serverY)
+==15780==    by 0x10B688: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15780==  Address 0x1ffefeae58 is on thread 1's stack
+==15780==  in frame #0, created by __libc_sigaction (sigaction.c:43)
+==15780==  Uninitialised value was created by a stack allocation
+==15780==    at 0x10A9EA: initSharedMemory (in /home/emreoztrk/Desktop/last_v/serverY)
+==15780== 
+==15780== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==15774== 
+==15774== HEAP SUMMARY:
+==15774==     in use at exit: 140 bytes in 6 blocks
+==15774==   total heap usage: 39 allocs, 33 frees, 10,494 bytes allocated
+==15774== 
+==15774== Searching for pointers to 6 not-freed blocks
+==15774== Checked 91,320 bytes
+==15774== 
+==15774== 100 bytes in 5 blocks are indirectly lost in loss record 1 of 2
+==15774==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15774==    by 0x10C1E2: convertMatrix (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10BF45: sendResponse (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10BE7B: childProcessY (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B559: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== 140 (40 direct, 100 indirect) bytes in 1 blocks are definitely lost in loss record 2 of 2
+==15774==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15774==    by 0x10C1AE: convertMatrix (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10BF45: sendResponse (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10BE7B: childProcessY (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B559: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== LEAK SUMMARY:
+==15774==    definitely lost: 40 bytes in 1 blocks
+==15774==    indirectly lost: 100 bytes in 5 blocks
+==15774==      possibly lost: 0 bytes in 0 blocks
+==15774==    still reachable: 0 bytes in 0 blocks
+==15774==         suppressed: 0 bytes in 0 blocks
+==15774== 
+==15774== ERROR SUMMARY: 22 errors from 7 contexts (suppressed: 0 from 0)
+==15774== 
+==15774== 1 errors in context 1 of 7:
+==15774== Conditional jump or move depends on uninitialised value(s)
+==15774==    at 0x490471E: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== 
+==15774== 1 errors in context 2 of 7:
+==15774== Conditional jump or move depends on uninitialised value(s)
+==15774==    at 0x4905258: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== 
+==15774== 1 errors in context 3 of 7:
+==15774== Conditional jump or move depends on uninitialised value(s)
+==15774==    at 0x48E86DD: _itoa_word (_itoa.c:179)
+==15774==    by 0x49045A4: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== 
+==15774== 1 errors in context 4 of 7:
+==15774== Use of uninitialised value of size 8
+==15774==    at 0x48E86CB: _itoa_word (_itoa.c:179)
+==15774==    by 0x49045A4: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== 
+==15774== 1 errors in context 5 of 7:
+==15774== Conditional jump or move depends on uninitialised value(s)
+==15774==    at 0x4904988: __vfprintf_internal (vfprintf-internal.c:1687)
+==15774==    by 0x4912128: __vsprintf_internal (iovsprintf.c:95)
+==15774==    by 0x48EEEF7: sprintf (sprintf.c:30)
+==15774==    by 0x10C2B4: isWorkerAvailable (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10CF2B: busyPoolCount (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B512: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Uninitialised value was created by a stack allocation
+==15774==    at 0x10B231: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== 
+==15774== 16 errors in context 6 of 7:
+==15774== Invalid read of size 4
+==15774==    at 0x10C248: convertMatrix (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10BF45: sendResponse (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10BE7B: childProcessY (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B559: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==  Address 0x4a84110 is 0 bytes after a block of size 32 alloc'd
+==15774==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15774==    by 0x10BDFB: childProcessY (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774==    by 0x10B559: main (in /home/emreoztrk/Desktop/last_v/serverY)
+==15774== 
+==15774== ERROR SUMMARY: 22 errors from 7 contexts (suppressed: 0 from 0)
+==15772== 
+==15772== HEAP SUMMARY:
+==15772==     in use at exit: 0 bytes in 0 blocks
+==15772==   total heap usage: 13 allocs, 13 frees, 11,013 bytes allocated
+==15772== 
+==15772== All heap blocks were freed -- no leaks are possible
+==15772== 
+==15772== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
