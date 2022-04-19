@@ -16,6 +16,7 @@
 #include "queue.h"
 #include "common.h"
 
+#define MATRIX_SIZE 8196
 #define SHARED_MEMORY_SIZE 200000
 #define BD_NO_CHDIR  01/* Don't chdir("/") */
 #define BD_NO_CLOSE_FILES  02/* Don't close all open files */
@@ -36,20 +37,25 @@ typedef struct sharedmemory{
     sem_t empty;
     sem_t full;
     sem_t critical;
+    sem_t interrupt;
     int busy;
+    int invertible;
+    int req_count;
 }SharedMemory;
 
 int prepareDaemon(int flags);
-void sendResponse(int row, int client_id, int *buff);
+int sendResponse(int row, int client_id, int *buff);
 void childProcessY(int sleepTime, int pipe[2], int busy, int poolSize);
-void childProcessZ(int sleepTime, void *ptr, int poolSizeZ);
-void readFifo(const char *fifoname, int file[1024]);
+int childProcessZ(int sleepTime, void *ptr, int poolSizeZ);
 int **convertMatrix(int row, int *buf);
 int isWorkerAvailable(int pid);
 int isInvertible(int **matrix, int row);
 int determinant(int **matrix, int row);
-void serverZ_process(char *logfile, int poolSizeZ, int t, int pipe[2]);
+int serverZ_process(char *logfile, int poolSizeZ, int t, int pipe[2]);
 int busyPoolCount(int size, Worker workers[]);
+void killProcesses(int size, Worker workers[]);
+void closePipes(int size, Worker workers[]);
+void freeMatrix(int **matrix, int row);
 
 //initalize shared memory
 void *initSharedMemory(int size);

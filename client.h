@@ -21,9 +21,9 @@ struct Matrix{
 
 int **createMatrix(int row);
 struct Matrix* readMatrix(const char *fileName);
-void writeFIFO(const char *fifoName, struct Matrix *m, int client_id);
+int writeFIFO(const char *fifoName, struct Matrix *m, int client_id);
 void freeMatrix(struct Matrix *matrix);
-void printResponse(int uniqFifoFd, char* uniqFifo, time_t start);
+int printResponse(int uniqFifoFd, char* uniqFifo, time_t start);
 int separeteValues(char *line, int **matrix, int row, int count);
 
 #endif

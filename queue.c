@@ -9,8 +9,7 @@ void initQueue(Queue *queue, int size){
 }
 
 int enqueue(Queue* queue, int dataStart, int dataEnd){
-    printf("rear %d\n", queue->rear);
-    
+
     if(queue->rear == queue->capacity){
         queue->rear = 0;
     }
@@ -32,7 +31,6 @@ int enqueue(Queue* queue, int dataStart, int dataEnd){
 }
 
 int dequeue(Queue* queue, int *dataStart, int *dataEnd){
-    printf("front%d\n", queue->front);
     if(queue->front == queue->capacity){
         queue->front = 0;
     }
