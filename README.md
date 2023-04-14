@@ -7,3 +7,6 @@
 - There will be a single instance of Y and of Z, and there can be an arbitrary number of client processes X, all running concurrently. 
 - Each client will submit a matrix to the server Y, and receive a response (from Y or Z) about whether it is invertible or not.
 
+## Results
+- My detailed results are under the 1901042622.pdf file.
+
